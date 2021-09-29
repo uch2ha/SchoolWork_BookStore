@@ -20,18 +20,20 @@ public class BookStoreApplication {
 	@Bean
 	public CommandLineRunner demo(BookStoreRepository BookRepository, CategoryRepository CategoryRepository) {
 		return (args) -> {
-			Book Ernest = new Book("Ernest Hemingway", "A Farewell to Arms", "1232323-21", "1929");
-			Book George = new Book("George Orwell", "Animal Farm", "2212343-5", "1945");
-			
-			BookRepository.save(Ernest);
-			BookRepository.save(George);
-			
-			
 			Category scifi = new Category("scifi");
 			Category comic = new Category("comic");
 			
 			CategoryRepository.save(scifi);
 			CategoryRepository.save(comic);
+			
+			Book Ernest = new Book("Ernest Hemingway", "A Farewell to Arms", "1232323-21", "1929", scifi);
+			Book George = new Book("George Orwell", "Animal Farm", "2212343-5", "1945", comic);
+			
+			BookRepository.save(Ernest);
+			BookRepository.save(George);
+			
+			
+
 			
 			
 		};
