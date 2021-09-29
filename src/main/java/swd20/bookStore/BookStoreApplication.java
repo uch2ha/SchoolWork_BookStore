@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 
 import swd20.bookStore.domain.Book;
 import swd20.bookStore.domain.BookStoreRepository;
+import swd20.bookStore.domain.Category;
+import swd20.bookStore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookStoreApplication {
@@ -16,14 +18,20 @@ public class BookStoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(BookStoreRepository repository) {
+	public CommandLineRunner demo(BookStoreRepository BookRepository, CategoryRepository CategoryRepository) {
 		return (args) -> {
 			Book Ernest = new Book("Ernest Hemingway", "A Farewell to Arms", "1232323-21", "1929");
 			Book George = new Book("George Orwell", "Animal Farm", "2212343-5", "1945");
 			
+			BookRepository.save(Ernest);
+			BookRepository.save(George);
 			
-			repository.save(Ernest);
-			repository.save(George);
+			
+			Category scifi = new Category("scifi");
+			Category comic = new Category("comic");
+			
+			CategoryRepository.save(scifi);
+			CategoryRepository.save(comic);
 			
 			
 		};
