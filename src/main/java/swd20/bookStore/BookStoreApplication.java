@@ -26,8 +26,8 @@ public class BookStoreApplication {
 			CategoryRepository.save(scifi);
 			CategoryRepository.save(comic);
 			
-			Book Ernest = new Book("Ernest Hemingway", "A Farewell to Arms", "1232323-21", "1929", scifi);
-			Book George = new Book("George Orwell", "Animal Farm", "2212343-5", "1945", comic);
+			Book Ernest = new Book("Ernest Hemingway", "A Farewell to Arms", "1232323-21", "1929", CategoryRepository.findByName("scifi").get(0));
+			Book George = new Book("George Orwell", "Animal Farm", "2212343-5", "1945", CategoryRepository.findByName("comic").get(0));
 			
 			BookRepository.save(Ernest);
 			BookRepository.save(George);

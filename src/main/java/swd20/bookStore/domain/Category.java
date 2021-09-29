@@ -30,11 +30,11 @@ public class Category {
 		this.name = name;
 	}
 	
-	public long getId() {
+	public long getCategoryid() {
 		return categoryid;
 	}
-	public void setId(long id) {
-		this.categoryid = id;
+	public void setCategoryid(Long categoryid) {
+		this.categoryid = categoryid;
 	}
 	public String getName() {
 		return name;
