@@ -1,16 +1,16 @@
 package swd20.bookStore;
 
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import ch.qos.logback.classic.Logger;
 import swd20.bookStore.domain.Book;
 import swd20.bookStore.domain.BookStoreRepository;
 import swd20.bookStore.domain.Category;
 import swd20.bookStore.domain.CategoryRepository;
+import swd20.bookStore.domain.User;
+import swd20.bookStore.domain.UserRepository;
 
 @SpringBootApplication
 public class BookStoreApplication {
@@ -21,7 +21,7 @@ public class BookStoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(BookStoreRepository BookRepository, CategoryRepository CategoryRepository) {
+	public CommandLineRunner demo(BookStoreRepository BookRepository, CategoryRepository CategoryRepository, UserRepository UserRepository) {
 		return (args) -> {
 			//log.info("save something");
 			Category scifi = new Category("scifi");
@@ -36,6 +36,13 @@ public class BookStoreApplication {
 			BookRepository.save(Ernest);
 			BookRepository.save(George);
 			
+			
+			
+			User user1 = new User("user", "$2a$10$TniQhWcbBQAKTGfFdmE9X.dhP6C/5HVJ1rovIHu5ijfgg45iTF5LG", "USER");
+			User user2 = new User("admin", "$2a$10$5LH7lHXmihisynx4LpDN1uyvZmhAZ6L2E4XXULdaAVmRKCQajHnYK", "ADMIN");
+			
+			UserRepository.save(user1);
+			UserRepository.save(user2);
 			
 
 			
